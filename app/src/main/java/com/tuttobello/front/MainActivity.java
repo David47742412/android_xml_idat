@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(@NonNull List<UserEntity> userEntities) {
                         Intent onLogoutIntent = new Intent(MainActivity.this, LoginActivity.class);
                         try {
-                            if ((long) userEntities.size() == 0) {
+                            if (userEntities.size() == 0) {
                                 startActivity(onLogoutIntent);
                                 finish();
                                 return;

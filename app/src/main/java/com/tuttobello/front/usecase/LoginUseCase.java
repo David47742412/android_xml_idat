@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import com.tuttobello.front.model.auth.RAuth;
 import com.tuttobello.front.model.auth.SAuth;
 import com.tuttobello.front.model.response.ResponseApi;
-import com.tuttobello.front.network.IApi;
+import com.tuttobello.front.network.api.IApi;
 
 import java.lang.reflect.Type;
 
@@ -23,7 +23,8 @@ public class LoginUseCase {
     private final Gson _gson;
 
     public LoginUseCase() {
-        this._iAuth = getClient().create(IApi.class);
+        this._iAuth = getClient().
+                create(IApi.class);
         _gson = new Gson();
     }
 
@@ -34,16 +35,17 @@ public class LoginUseCase {
                 Response<ResponseApi<Object>> response = call.execute();
 
                 if (response.isSuccessful()) {
-                    Type responseType = new TypeToken<ResponseApi<RAuth>>() {}.getType();
+                    Type responseType = new TypeToken<ResponseApi<RAuth>>() {
+                    }.getType();
                     String responseJson = _gson.toJson(response.body());
                     ResponseApi<RAuth> res = _gson.fromJson(responseJson, responseType);
                     emitter.onSuccess(res);
-                } else {
-                    ResponseApi<RAuth> fail = new ResponseApi<>();
-                    fail.message = response.message();
-                    fail.statusCode = response.code();
-                    emitter.onSuccess(fail);
+                    return;
                 }
+                ResponseApi<RAuth> fail = new ResponseApi<>();
+                fail.message = response.message();
+                fail.statusCode = response.code();
+                emitter.onSuccess(fail);
             } catch (Exception ex) {
                 Log.e("error-login", ex.getMessage());
                 emitter.onError(ex);

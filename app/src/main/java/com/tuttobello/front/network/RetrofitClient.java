@@ -1,5 +1,10 @@
 package com.tuttobello.front.network;
 
+import com.tuttobello.front.network.interceptor.AuthInterceptor;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -11,9 +16,15 @@ public class RetrofitClient {
 
     public static Retrofit getClient() {
         if (retrofit == null) {
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            httpClient.connectTimeout(30, TimeUnit.SECONDS);
+            httpClient.readTimeout(30, TimeUnit.SECONDS);
+            httpClient.writeTimeout(30, TimeUnit.SECONDS);
+            httpClient.addInterceptor(new AuthInterceptor());
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient.build())
                     .build();
         }
         return retrofit;

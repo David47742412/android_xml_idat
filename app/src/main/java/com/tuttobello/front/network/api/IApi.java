@@ -1,4 +1,4 @@
-package com.tuttobello.front.network;
+package com.tuttobello.front.network.api;
 
 import com.tuttobello.front.model.response.ResponseApi;
 

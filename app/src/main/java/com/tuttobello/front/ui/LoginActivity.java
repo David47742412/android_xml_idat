@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tuttobello.front.R;
 import com.tuttobello.front.model.auth.RAuth;
 import com.tuttobello.front.model.auth.SAuth;
-import com.tuttobello.front.network.response.ResponseApi;
+import com.tuttobello.front.model.response.ResponseApi;
 import com.tuttobello.front.usecase.LoginUseCase;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;

@@ -1,4 +1,4 @@
-package com.tuttobello.front.network.response;
+package com.tuttobello.front.model.response;
 
 import com.google.gson.annotations.SerializedName;
 

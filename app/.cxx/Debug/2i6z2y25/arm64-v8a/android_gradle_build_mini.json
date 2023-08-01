@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "C:\\Users\\david\\tuttobello\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\david\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\david\\tuttobello\\app\\.cxx\\Debug\\2i6z2y25\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\david\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\david\\tuttobello\\app\\.cxx\\Debug\\2i6z2y25\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "front::@6890427a1f51a3e7e1df": {
+      "artifactName": "front",
+      "abi": "arm64-v8a",
+      "output": "C:\\Users\\david\\tuttobello\\app\\build\\intermediates\\cxx\\Debug\\2i6z2y25\\obj\\arm64-v8a\\libfront.so",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -28,7 +28,7 @@ public class DbMainHelper {
     }
 
     @NonNull
-    public IUserDao getUserDao() {
+    public static IUserDao getUserDao() {
         return _userDao;
     }
 

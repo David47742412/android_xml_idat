@@ -2,6 +2,7 @@ package com.tuttobello.front.usecase;
 
 import static com.tuttobello.front.network.RetrofitClient.getClient;
 
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,13 @@ import com.tuttobello.front.model.auth.RAuth;
 import com.tuttobello.front.model.auth.SAuth;
 import com.tuttobello.front.model.response.ResponseApi;
 import com.tuttobello.front.network.api.IApi;
+import com.tuttobello.front.room.dao.main.IUserDao;
+import com.tuttobello.front.room.entites.main.UserEntity;
+import com.tuttobello.front.room.helper.main.DbMainHelper;
+import com.tuttobello.front.room.service.UserService;
 
 import java.lang.reflect.Type;
+import java.util.Objects;
 
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Call;
@@ -36,21 +42,25 @@ public class LoginUseCase {
             try {
                 Call<ResponseApi<Object>> call = _iAuth.post(uri, sAuth);
                 Response<ResponseApi<Object>> response = call.execute();
-
-                if (response.isSuccessful()) {
-                    Type responseType = new TypeToken<ResponseApi<RAuth>>() {
-                    }.getType();
-                    String responseJson = _gson.toJson(response.body());
-                    ResponseApi<RAuth> res = _gson.fromJson(responseJson, responseType);
-                    emitter.onSuccess(res);
-                    return;
+                if (!response.isSuccessful()) {
+					ResponseApi<RAuth> fail = new ResponseApi<>();
+					fail.message = response.message();
+					fail.statusCode = response.code();
+					emitter.onSuccess(fail);
+					return;
                 }
-                ResponseApi<RAuth> fail = new ResponseApi<>();
-                fail.message = response.message();
-                fail.statusCode = response.code();
-                emitter.onSuccess(fail);
+				Type responseType = new TypeToken<ResponseApi<RAuth>>() {
+				}.getType();
+				String responseJson = _gson.toJson(response.body());
+				ResponseApi<RAuth> res = _gson.fromJson(responseJson, responseType);
+	
+				UserEntity userEntity = new UserEntity(res.body.get(0));
+				IUserDao userDao = DbMainHelper.getUserDao();
+				UserService userService = new UserService(userDao);
+				userService.insertUser(userEntity);
+				emitter.onSuccess(res);
             } catch (Exception ex) {
-                Log.e("error-login", ex.getMessage());
+                Log.e("error-login", Objects.requireNonNull(ex.getMessage()));
                 emitter.onError(ex);
             }
         });

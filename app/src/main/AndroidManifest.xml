@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Tuttobello_front"
         tools:targetApi="31">
         <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity

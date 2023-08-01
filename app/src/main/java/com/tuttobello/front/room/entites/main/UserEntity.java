@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.tuttobello.front.model.auth.RAuth;
+
 @Entity(tableName = "User")
 public class UserEntity {
 
@@ -11,19 +13,14 @@ public class UserEntity {
     }
 
     public UserEntity(
-            String userId,
-            String name,
-            String lastName,
-            String username,
-            String email,
-            String token
+            RAuth rAuth
     ) {
-        this.userId = userId;
-        this.name = name;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.token = token;
+        this.userId = rAuth.usrId;
+        this.name = rAuth.name;
+        this.lastName = rAuth.lastName;
+        this.username = rAuth.username;
+        this.email = rAuth.email;
+        this.token = rAuth.token;
     }
 
     @PrimaryKey(autoGenerate = true)

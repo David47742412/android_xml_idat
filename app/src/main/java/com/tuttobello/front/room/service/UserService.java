@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.core.Single;
 
 public class UserService {
@@ -22,17 +24,9 @@ public class UserService {
     public Single<List<UserEntity>> getUser() {
         return Single.create(emitter -> emitter.onSuccess(this._userDao.findAll()));
     }
-
-    @NotNull
-    public Single<List<UserEntity>> insertUser(@NonNull UserEntity user) {
-        return Single.create(emitter -> {
-            try {
-                this._userDao.insert(user);
-                emitter.onSuccess(this._userDao.findAll());
-            } catch (Exception ex) {
-                emitter.onError(ex);
-            }
-        });
+    
+    public void insertUser(@NonNull UserEntity user) {
+        this._userDao.insert(user);
     }
 
 }

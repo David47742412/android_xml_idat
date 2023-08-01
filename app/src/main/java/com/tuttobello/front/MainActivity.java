@@ -9,6 +9,7 @@ import com.tuttobello.front.room.dao.main.IUserDao;
 import com.tuttobello.front.room.entites.main.UserEntity;
 import com.tuttobello.front.room.helper.main.DbMainHelper;
 import com.tuttobello.front.room.service.UserService;
+import com.tuttobello.front.ui.HomeActivity;
 import com.tuttobello.front.ui.LoginActivity;
 
 import java.util.List;
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                                 return;
                             }
-                            //Intent onHomeIntent = new Intent(MainActivity.this, HomeActivity.class);
+                            Intent onHomeIntent = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(onHomeIntent);
+                            finish();
                         } catch (Exception ex) {
                             startActivity(onLogoutIntent);
                             finish();

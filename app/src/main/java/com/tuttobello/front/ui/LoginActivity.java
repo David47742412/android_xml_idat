@@ -1,6 +1,8 @@
 package com.tuttobello.front.ui;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,15 +15,25 @@ import com.tuttobello.front.R;
 import com.tuttobello.front.model.auth.RAuth;
 import com.tuttobello.front.model.auth.SAuth;
 import com.tuttobello.front.model.response.ResponseApi;
+import com.tuttobello.front.room.dao.main.IUserDao;
+import com.tuttobello.front.room.database.main.DbMain;
+import com.tuttobello.front.room.entites.main.UserEntity;
+import com.tuttobello.front.room.helper.main.DbMainHelper;
+import com.tuttobello.front.room.service.UserService;
 import com.tuttobello.front.usecase.LoginUseCase;
+
+import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private Binder binder;
 
     private final OnClickListener onLogin = (v) -> {
         Context CONTEXT = LoginActivity.this;
@@ -45,7 +57,34 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(CONTEXT, "No autorizado", Toast.LENGTH_LONG).show();
                                 return;
                             }
-                            Toast.makeText(CONTEXT, "Autenticación correcta", Toast.LENGTH_LONG).show();
+                            RAuth result = response.body.get(0);
+                            UserEntity userInsert = new UserEntity(
+                                    result.usrId, result.name,
+                                    result.lastName, result.username,
+                                    result.email, result.token
+                            );
+                            DbMain dbMain = DbMainHelper.getDbMain();
+                            IUserDao userDao = dbMain.userDao();
+                            UserService service = new UserService(userDao);
+                            service.insertUser(userInsert)
+                                    .observeOn(Schedulers.io())
+                                    .subscribe(new SingleObserver<List<UserEntity>>() {
+                                        @Override
+                                        public void onSubscribe(@NonNull Disposable d) {
+
+                                        }
+
+                                        @Override
+                                        public void onSuccess(@NonNull List<UserEntity> userEntities) {
+                                            Intent intent = new Intent(LoginActivity);
+                                        }
+
+                                        @Override
+                                        public void onError(@NonNull Throwable e) {
+                                            Toast.makeText(CONTEXT, "Ha ocurrido un Error al guardar un usuario", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
                         }
 
                         @Override

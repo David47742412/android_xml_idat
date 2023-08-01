@@ -7,6 +7,25 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "User")
 public class UserEntity {
 
+    public UserEntity() {
+    }
+
+    public UserEntity(
+            String userId,
+            String name,
+            String lastName,
+            String username,
+            String email,
+            String token
+    ) {
+        this.userId = userId;
+        this.name = name;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.token = token;
+    }
+
     @PrimaryKey(autoGenerate = true)
     public int id;
 

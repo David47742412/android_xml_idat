@@ -4,6 +4,8 @@ import static com.tuttobello.front.network.RetrofitClient.getClient;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tuttobello.front.model.auth.RAuth;
@@ -28,7 +30,8 @@ public class LoginUseCase {
         _gson = new Gson();
     }
 
-    public Single<ResponseApi<RAuth>> login(String uri, SAuth sAuth) {
+    @NonNull
+    public Single<ResponseApi<RAuth>> login(@NonNull String uri, @NonNull SAuth sAuth) {
         return Single.create(emitter -> {
             try {
                 Call<ResponseApi<Object>> call = _iAuth.post(uri, sAuth);

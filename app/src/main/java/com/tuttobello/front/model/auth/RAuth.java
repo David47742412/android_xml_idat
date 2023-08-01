@@ -1,11 +1,11 @@
 package com.tuttobello.front.model.auth;
 
 public class RAuth {
-    String usrId;
-    String name;
-    String lastName;
-    String username;
-    String email;
-    String numDoc;
-    String token;
+    public String usrId;
+    public String name;
+    public String lastName;
+    public String username;
+    public String email;
+    public String numDoc;
+    public String token;
 }

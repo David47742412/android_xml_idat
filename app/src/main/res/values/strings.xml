@@ -2,6 +2,6 @@
     <string name="app_name">tuttobello_front</string>
     <string name="login_username">Nombre de usuario o email</string>
     <string name="login_password">Contraseña</string>
-    <string name="login_btn_send">Enviar</string>
+    <string name="login_btn_send">Iniciar Sesión</string>
     <string name="autn_example">autenticado</string>
 </resources>

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -25,49 +26,49 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class LoginActivity extends AppCompatActivity {
 
-	private final OnClickListener onLogin = (v) -> {
-		Context CONTEXT = LoginActivity.this;
-		try {
-			EditText username = findViewById(R.id.etUsername);
-			EditText password = findViewById(R.id.etPassword);
-			LoginUseCase loginUseCase = new LoginUseCase();
-			SAuth auth = new SAuth(username.getText().toString(), password.getText().toString());
-			loginUseCase.login("auth/login", auth)
-					.subscribeOn(Schedulers.io())
-					.observeOn(AndroidSchedulers.mainThread())
-					.subscribe(new SingleObserver<ResponseApi<RAuth>>() {
-						@Override
-						public void onSubscribe(@NonNull Disposable d) {
+private final OnClickListener onLogin = (v) -> {
+	Context CONTEXT = LoginActivity.this;
+	try {
+		EditText username = findViewById(R.id.etUsername);
+		EditText password = findViewById(R.id.etPassword);
+		LoginUseCase loginUseCase = new LoginUseCase();
+		SAuth auth = new SAuth(username.getText().toString(), password.getText().toString());
+		loginUseCase.login("auth/login", auth)
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new SingleObserver<ResponseApi<RAuth>>() {
+					@Override
+					public void onSubscribe(@NonNull Disposable d) {
 						
+					}
+					
+					@Override
+					public void onSuccess(@NonNull ResponseApi<RAuth> response) {
+						if (response.statusCode == 401) {
+							Snackbar.make(v, "Usuario o contraseña incorrectos", Snackbar.LENGTH_LONG).show();
+							return;
 						}
-						
-						@Override
-						public void onSuccess(@NonNull ResponseApi<RAuth> response) {
-							if (response.statusCode == 401) {
-								Snackbar.make(v, "Usuario o contraseña incorrectos", Snackbar.LENGTH_LONG).show();
-								return;
-							}
-							Intent onHome = new Intent(CONTEXT, HomeActivity.class);
-							startActivity(onHome);
-							finish();
-						}
-						
-						@Override
-						public void onError(@NonNull Throwable e) {
-							Snackbar.make(v, "Ha Ocurrido un Error al momento de autenticar", Snackbar.LENGTH_LONG).show();
-						}
-					});
-		} catch (Exception ex) {
-			Toast.makeText(CONTEXT, ex.getMessage(), Toast.LENGTH_LONG).show();
-		}
-	};
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
-		Button btnLogin = findViewById(R.id.btnLogin);
-		btnLogin.setOnClickListener(onLogin);
+						Intent onHome = new Intent(CONTEXT, HomeActivity.class);
+						startActivity(onHome);
+						finish();
+					}
+					
+					@Override
+					public void onError(@NonNull Throwable e) {
+						Snackbar.make(v, "Ha Ocurrido un Error al momento de autenticar", Snackbar.LENGTH_LONG).show();
+					}
+				});
+	} catch (Exception ex) {
+		Toast.makeText(CONTEXT, ex.getMessage(), Toast.LENGTH_LONG).show();
 	}
+};
+
+@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_login);
+	Button btnLogin = findViewById(R.id.btnLogin);
+	btnLogin.setOnClickListener(onLogin);
+}
 
 }

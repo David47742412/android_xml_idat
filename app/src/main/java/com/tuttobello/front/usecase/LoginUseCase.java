@@ -2,7 +2,6 @@ package com.tuttobello.front.usecase;
 
 import static com.tuttobello.front.network.RetrofitClient.getClient;
 
-import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;

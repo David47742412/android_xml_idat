@@ -37,7 +37,7 @@ private final OnClickListener onLogin = (v) -> {
 		SAuth auth = new SAuth(username.getText().toString(), password.getText().toString());
 		loginUseCase.login("auth/login", auth)
 				.subscribeOn(Schedulers.io())
-				//.observeOn(AndroidSchedulers.mainThread())
+				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(new SingleObserver<ResponseApi<RAuth>>() {
 					@Override
 					public void onSubscribe(@NonNull Disposable d) {

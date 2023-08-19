@@ -4,23 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeActivity">
+    tools:context=".ui.BookCreateActivity">
 
     <TextView
+        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/autn_example"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        android:layout_height="match_parent"
+        android:text="Formulario de Libro"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnCreateBook"
-        android:text="Crear Libro"
+        android:id="@+id/btnBack"
+        android:text="Volver"
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

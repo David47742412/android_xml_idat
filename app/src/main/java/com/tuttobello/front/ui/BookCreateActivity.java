@@ -4,12 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,25 +46,13 @@ public class BookCreateActivity extends AppCompatActivity {
         CategoryUseCase category = new CategoryUseCase();
 
         List<RCategory> categories = new ArrayList<>();
-        Spinner spinnerCategory = findViewById(R.id.spinnerCategory);
         ArrayAdapter<RCategory> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ListView spinnerCategory = findViewById(R.id.spinnerCategory);
         spinnerCategory.setAdapter(adapter);
 
-        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("view-error-and", view.getTransitionName());
-                RCategory categories = (RCategory) parent.getItemAtPosition(position);
-                idCategory = categories.categoryId;
-                Log.e("id-category", idCategory);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Log.e("id-category", idCategory);
-            }
-        });
+        spinnerCategory.setOnItemClickListener(
+                (parent, view, position, id) -> idCategory = categories.get(position).categoryId);
 
         category.getCategories("category")
                 .subscribeOn(Schedulers.io())
@@ -105,12 +91,11 @@ public class BookCreateActivity extends AppCompatActivity {
                     Context CONTEXT = BookCreateActivity.this;
                     try {
                         BookUseCase bookUseCase = new BookUseCase();
-                        Log.e("error-category", idCategory + "--");
                         if (this.idCategory.isEmpty()) {
                             Snackbar.make(v, "Selecciona una categoria", Snackbar.LENGTH_LONG).show();
                             return;
                         }
-                        SBook book = new SBook(nameBook.getText().toString(), descriptionBook.getText().toString(), "");
+                        SBook book = new SBook(nameBook.getText().toString(), descriptionBook.getText().toString(), idCategory);
                         bookUseCase.createBook("book-detail", book)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())

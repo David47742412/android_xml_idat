@@ -9,8 +9,4 @@ public class SBook {
         this.descriptionBook = descriptionBook;
         this.categoryId = categoryId;
     }
-
-//        "nameBook": "la odisea",
-//                "descriptionBook": "literatura griega",
-//                "categoryId": "6f6f4b11-fb37-4035-8f5d-087a8c3d33be"
 }

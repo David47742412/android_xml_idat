@@ -4,26 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp"
     tools:context=".ui.BookCreateActivity">
 
-    <TextView
-        android:id="@+id/txtInit"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Formulario de Libro"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameBookInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del libro"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionBookInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginBottom="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNameBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo de texto para la contraseña -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionBookInput"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Descripcion"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/categoryInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameBookInput"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginBottom="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDescriptionBook"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:inputType="text"
+            android:maxLines="3" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--lista desplegable Category-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/categoryInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escoger Categoria ..."
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionBookInput"
+        app:layout_constraintVertical_chainStyle="packed">
+
+         <AutoCompleteTextView
+            android:id="@+id/dataCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botón de inicio de sesión -->
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_marginTop="12pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryInput" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/btnBack"
-        android:text="Volver"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/txtInit"
-        />
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver al Catalogo"
+        android:layout_marginTop="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/nameBookInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="40pt"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

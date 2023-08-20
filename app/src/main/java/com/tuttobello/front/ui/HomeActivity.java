@@ -1,11 +1,16 @@
 package com.tuttobello.front.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +24,7 @@ import com.tuttobello.front.network.api.IApi;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +35,7 @@ public class HomeActivity extends AppCompatActivity implements BookListAdapter.O
     private RecyclerView recyclerView;
     private BookListAdapter adapter;
     private IApi apiService;
+    private List<RBook> books;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +60,7 @@ public class HomeActivity extends AppCompatActivity implements BookListAdapter.O
                         Gson gson = new Gson();
                         String json = gson.toJson(data.body); // Convert the body to JSON string
                         RBook[] booksArray = gson.fromJson(json, RBook[].class); // Convert JSON string to array of RBook
-                        List<RBook> books = Arrays.asList(booksArray); // Convert array to List
+                        books = Arrays.asList(booksArray); // Convert array to List
 
                         // Now you can use the 'books' list to set up your RecyclerView
                         adapter = new BookListAdapter(books, HomeActivity.this);
@@ -73,10 +80,56 @@ public class HomeActivity extends AppCompatActivity implements BookListAdapter.O
 
 
     }
+
+
     @Override
     public void onDeleteClick(String bookId) {
-        // Mostrar el ID del libro en la consola al hacer clic en el botón delete
-        System.out.println("Book ID to Delete: " + bookId);
+        // Mostrar el ID del libro en la consola al hacer clic en el botón delet
+
+        Call<ResponseApi<Object>> call = apiService.delete(bookId);
+        call.enqueue(new Callback<ResponseApi<Object>>() {
+            @Override
+            public void onResponse(Call<ResponseApi<Object>> call, Response<ResponseApi<Object>> response) {
+                if (response.isSuccessful()) {
+                    showNotification("El libro se ha eliminado exitosamente.");
+
+                    for (int i = 0; i < books.size(); i++) {
+                        if (books.get(i).bookId.equals(bookId)) {
+                            books.remove(i);
+                            adapter.notifyItemRemoved(i);
+                            break;
+                        }
+                    }
+
+                } else {
+                    System.out.println("No se encontró el libro con ID: " + bookId);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseApi<Object>> call, Throwable t) {
+                System.out.println(t.fillInStackTrace());
+            }
+        });
+
     }
+
+    private void showNotification(String message) {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("channel_id", "Channel Name", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "channel_id")
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("Eliminación Exitosa")
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        notificationManager.notify(1, builder.build());
+    }
+
 
 }

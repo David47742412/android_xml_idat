@@ -21,7 +21,7 @@ public interface IApi {
     @PUT
     Call<ResponseApi<Object>> put(@Url String uri, @Body() Object body);
 
-    @DELETE
-    Call<ResponseApi<Object>> delete(@Url String uri, @Body() Object body);
+    @DELETE("book-detail/")
+    Call<ResponseApi<Object>> delete(@Url String uri);
 
 }

@@ -1,6 +1,5 @@
 package com.tuttobello.front.network.api;
 
-import com.tuttobello.front.model.book.RBook;
 import com.tuttobello.front.model.response.ResponseApi;
 
 import retrofit2.Call;

@@ -9,27 +9,53 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="ea67cc95-2936-40ad-9f87-fe4f5f383132" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/render.experimental.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/model/category/RCategory.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/usecase/category/CategoryUseCase.java" afterDir="false" />
+=======
+    <list default="true" id="ea67cc95-2936-40ad-9f87-fe4f5f383132" name="Changes" comment="cambios en catalogo">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_home.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_notification.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_profile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+>>>>>>> f39791f7e91aaccdf9c19c9e5f22ef3ab73a15aa
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/ui/BookCreateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/ui/BookCreateActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/usecase/book/BookUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/usecase/book/BookUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_book_create.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_book_create.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/network/api/IApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/network/api/IApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/ui/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/ui/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_book.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+>>>>>>> f39791f7e91aaccdf9c19c9e5f22ef3ab73a15aa
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Usuario\.android\avd\Pixel_2_API_29.avd]" />
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Sebastian\.android\avd\Nexus_5_API_28.avd]" />
+>>>>>>> f39791f7e91aaccdf9c19c9e5f22ef3ab73a15aa
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -46,22 +72,22 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tuttobello" type="f1a62948:ProjectNode" />
+                <item name="tuttobello_front" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tuttobello" type="f1a62948:ProjectNode" />
+                <item name="tuttobello_front" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tuttobello" type="f1a62948:ProjectNode" />
+                <item name="tuttobello_front" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="tuttobello" type="f1a62948:ProjectNode" />
+                <item name="tuttobello_front" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="other" type="c8890929:TasksNode$1" />
@@ -76,9 +102,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -101,20 +127,38 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+<<<<<<< HEAD
     "android-custom-viewC:/Users/Usuario/AppData/Local/Android/Sdk/sources/android-33/android/view/View.java_SELECTED": "View",
     "cidr.known.project.marker": "true",
     "last_directory_selection": "C:/Users/Usuario/Documents/_instituto/2.MARTES - Aplicaciones Moviles/devOps/android_xml_idat/app/src/main/res/drawable",
     "last_opened_file_path": "C:/Users/Usuario/Documents/_instituto/2.MARTES - Aplicaciones Moviles/devOps/MyFristAppUI"
+=======
+    "android-custom-viewC:/Users/Sebastian/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.3.1/863be7264bcda9a6591b855b6219be040badb588/recyclerview-1.3.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
+    "android-custom-viewC:/Users/Sebastian/AppData/Local/Android/Sdk/sources/android-28/android/view/View.java_SELECTED": "View",
+    "android-custom-viewC:/Users/Usuario/AppData/Local/Android/Sdk/sources/android-33/android/view/View.java_SELECTED": "View",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "last_directory_selection": "C:/Users/Usuario/Documents/_instituto/2.MARTES - Aplicaciones Moviles/devOps/android_xml_idat/app/src/main/res/drawable",
+    "last_opened_file_path": "D:/Archivos/Code/Android_Workspace/TuttobeloFinal/android_xml_idat/app/src/main/res/layout"
+>>>>>>> f39791f7e91aaccdf9c19c9e5f22ef3ab73a15aa
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.tuttobello.front.ui" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Archivos\Code\Android_Workspace\TuttobeloFinal\android_xml_idat\app\src\main\res\layout" />
+      <recent name="D:\Archivos\Code\Android_Workspace\TuttobeloFinal\android_xml_idat\app\src\main\res\drawable" />
       <recent name="C:\Users\Usuario\Documents\_instituto\2.MARTES - Aplicaciones Moviles\devOps\android_xml_idat\app\src\main\res\drawable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Usuario\Documents\_instituto\2.MARTES - Aplicaciones Moviles\devOps\android_xml_idat\app\src\main\res\drawable" />
     </key>
     <key name="android.template.-1271120819">
+      <recent name="com.tuttobello.front.ui" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.tuttobello.front.ui" />
     </key>
   </component>
@@ -266,6 +310,14 @@
       <option name="presentableId" value="Default" />
       <updated>1687354581749</updated>
     </task>
+    <task id="LOCAL-00001" summary="cambios en catalogo">
+      <created>1692496034892</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1692496034892</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,5 +330,30 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cambios en catalogo" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambios en catalogo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/ui/HomeActivity.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/tuttobello/front/ui/HomeActivity.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.String" memberName="shadow$_klass_" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

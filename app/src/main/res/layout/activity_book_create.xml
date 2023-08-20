@@ -37,7 +37,7 @@
         android:layout_height="100dp"
         android:hint="Descripcion"
         android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/categoryInput"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameBookInput"
@@ -54,8 +54,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--lista desplegable Category-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/categoryInput"
+    <Spinner
+        android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Escoger Categoria ..."
@@ -66,13 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/descriptionBookInput"
         app:layout_constraintVertical_chainStyle="packed">
 
-         <AutoCompleteTextView
-            android:id="@+id/dataCategory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="none" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    </Spinner>
 
     <!-- Botón de inicio de sesión -->
     <Button
@@ -85,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryInput" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
 
     <Button
         android:id="@+id/btnBack"

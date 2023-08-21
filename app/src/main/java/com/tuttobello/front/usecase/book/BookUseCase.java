@@ -60,4 +60,56 @@ public class BookUseCase {
             }
         });
     }
+
+    @NonNull
+    public Single<ResponseApi<RBook>> updateBook(@NonNull String uri, @NonNull SBook sBook) {
+        return Single.create(emitter -> {
+            try {
+                Call<ResponseApi<Object>> call = _iBook.put(uri, sBook);
+                Response<ResponseApi<Object>> response = call.execute();
+                if (!response.isSuccessful()) {
+                    ResponseApi<RBook> fail = new ResponseApi<>();
+                    fail.message = response.message();
+                    fail.statusCode = response.code();
+                    emitter.onSuccess(fail);
+                    return;
+                }
+                Type responseType = new TypeToken<ResponseApi<RBook>>() {
+                }.getType();
+                String responseJson = _gson.toJson(response.body());
+                ResponseApi<RBook> res = _gson.fromJson(responseJson, responseType);
+                //en caso existoso
+                emitter.onSuccess(res);
+            } catch (Exception ex) {
+                Log.e("error-book", Objects.requireNonNull(ex.getMessage()));
+                emitter.onError(ex);
+            }
+        });
+    }
+
+    @NonNull
+    public Single<ResponseApi<RBook>> deleteBook(@NonNull String uri) {
+        return Single.create(emitter -> {
+            try {
+                Call<ResponseApi<Object>> call = _iBook.delete(uri);
+                Response<ResponseApi<Object>> response = call.execute();
+                if (!response.isSuccessful()) {
+                    ResponseApi<RBook> fail = new ResponseApi<>();
+                    fail.message = response.message();
+                    fail.statusCode = response.code();
+                    emitter.onSuccess(fail);
+                    return;
+                }
+                Type responseType = new TypeToken<ResponseApi<RBook>>() {
+                }.getType();
+                String responseJson = _gson.toJson(response.body());
+                ResponseApi<RBook> res = _gson.fromJson(responseJson, responseType);
+                //en caso existoso
+                emitter.onSuccess(res);
+            } catch (Exception ex) {
+                Log.e("error-book", Objects.requireNonNull(ex.getMessage()));
+                emitter.onError(ex);
+            }
+        });
+    }
 }

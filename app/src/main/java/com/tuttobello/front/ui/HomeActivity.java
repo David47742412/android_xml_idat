@@ -81,7 +81,6 @@ public class HomeActivity extends AppCompatActivity implements BookListAdapter.O
 
     }
 
-
     @Override
     public void onDeleteClick(String bookId) {
         // Mostrar el ID del libro en la consola al hacer clic en el botón delet

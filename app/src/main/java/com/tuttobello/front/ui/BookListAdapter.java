@@ -50,12 +50,22 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
         holder.bookNameTextView.setText(book.bookName);
         holder.bookDescrTextView.setText(book.bookDescription);
 
-        new Intent().putExtra("bookId", book.bookId)
-                .putExtra("bookName", book.bookName)
-                .putExtra("bookDescription", book.bookDescription)
-                .putExtra("categoryName", book.categoryName);
+        holder.updateButton.setOnClickListener(v ->{
 
-        new Intent().getStringExtra("bookId");
+            Intent intent = new Intent(v.getContext(),BookCreateActivity.class);
+
+            intent.putExtra("bookId", book.bookId)
+                    .putExtra("bookName", book.bookName)
+                    .putExtra("bookDescription", book.bookDescription)
+                    .putExtra("categoryName", book.categoryName);
+
+            v.getContext().startActivity(intent);
+
+        });
+
+
+
+//        new Intent().getStringExtra("bookId");
 
         // Configurar el listener para el botón delete
         holder.deleteButton.setOnClickListener(v -> {
@@ -83,7 +93,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
                                             return;
                                         }
 
-//                                        Intent onHome = new Intent(CONTEXT, BookListAdapter.class);
+//                                        Intent onHome = new Intent(this, BookListAdapter.class);
 //                                        startActivity(onHome);
 //                                        finish();
                                     }
@@ -115,12 +125,14 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
         TextView bookNameTextView;
         TextView bookDescrTextView;
         Button deleteButton;
+        Button updateButton;
 
         BookViewHolder(@NonNull View itemView) {
             super(itemView);
             bookNameTextView = itemView.findViewById(R.id.bookNameTextView);
             bookDescrTextView = itemView.findViewById(R.id.bookDescrTextView);
             deleteButton = itemView.findViewById(R.id.deleteButton);
+            updateButton = itemView.findViewById(R.id.updateButton);
         }
     }
 }

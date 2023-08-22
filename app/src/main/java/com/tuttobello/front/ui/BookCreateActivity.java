@@ -32,6 +32,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class BookCreateActivity extends AppCompatActivity {
 
+    public BookCreateActivity(){}
     String idCategory = "";
 
     @Override
@@ -39,11 +40,19 @@ public class BookCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_create);
 
+        String bookId = getIntent().getStringExtra("bookId");
+        String bookName = getIntent().getStringExtra("bookName");
+        String bookDescription = getIntent().getStringExtra("bookDescription");
+        String categoryName = getIntent().getStringExtra("categoryName");
+
         EditText nameBook = findViewById(R.id.etNameBook);
         EditText descriptionBook = findViewById(R.id.etDescriptionBook);
-
-
         CategoryUseCase category = new CategoryUseCase();
+
+        //Mostrando valores para el libro a actualizar
+        nameBook.setText(bookName);
+        descriptionBook.setText(bookDescription);
+
 
         List<RCategory> categories = new ArrayList<>();
         ArrayAdapter<RCategory> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
@@ -88,44 +97,72 @@ public class BookCreateActivity extends AppCompatActivity {
         //creando nuevo libro
         Button btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(v -> {
-                    Context CONTEXT = BookCreateActivity.this;
-                    try {
-                        BookUseCase bookUseCase = new BookUseCase();
-                        if (this.idCategory.isEmpty()) {
-                            Snackbar.make(v, "Selecciona una categoria", Snackbar.LENGTH_LONG).show();
-                            return;
-                        }
-                        SBook book = new SBook(nameBook.getText().toString(), descriptionBook.getText().toString(), idCategory);
-                        bookUseCase.createBook("book-detail", book)
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new SingleObserver<ResponseApi<RBook>>() {
-                                    @Override
-                                    public void onSubscribe(@NonNull Disposable d) {
-
-                                    }
-
-                                    @Override
-                                    public void onSuccess(@NonNull ResponseApi<RBook> response) {
-                                        if (response.statusCode == 401) {
-                                            Snackbar.make(v, "Este libro contiene atributos invalidos", Snackbar.LENGTH_LONG).show();
-                                            return;
-                                        }
-                                        Intent onHome = new Intent(CONTEXT, HomeActivity.class);
-                                        startActivity(onHome);
-                                        finish();
-                                    }
-
-                                    @Override
-                                    public void onError(@NonNull Throwable e) {
-                                        Snackbar.make(v, "Ha Ocurrido un Error al registrar el Libro", Snackbar.LENGTH_LONG).show();
-                                    }
-                                });
-
-                    } catch (Exception ex) {
-                        Toast.makeText(CONTEXT, ex.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+            Context CONTEXT = BookCreateActivity.this;
+            try {
+                BookUseCase bookUseCase = new BookUseCase();
+                if (this.idCategory.isEmpty()) {
+                    Snackbar.make(v, "Selecciona una categoria", Snackbar.LENGTH_LONG).show();
+                    return;
                 }
+                SBook book = new SBook(nameBook.getText().toString(), descriptionBook.getText().toString(), idCategory);
+
+                if(bookId != null && !bookId.isEmpty()){
+                    Snackbar.make(v, "libro actualizado", Snackbar.LENGTH_LONG).show();
+
+                    bookUseCase.updateBook("book-detail/"+bookId, book)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new SingleObserver<ResponseApi<RBook>>() {
+                            @Override
+                            public void onSubscribe(@NonNull Disposable d) {}
+
+                            @Override
+                            public void onSuccess(@NonNull ResponseApi<RBook> response) {
+                                if (response.statusCode == 401) {
+                                    Snackbar.make(v, "Este libro contiene atributos invalidos", Snackbar.LENGTH_LONG).show();
+                                    return;
+                                }
+                                Intent onHome = new Intent(CONTEXT, HomeActivity.class);
+                                startActivity(onHome);
+                                finish();
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                Snackbar.make(v, "Ha Ocurrido un Error al actualizar el Libro", Snackbar.LENGTH_LONG).show();
+                            }
+                        });
+                    return;
+                }
+
+                bookUseCase.createBook("book-detail", book)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new SingleObserver<ResponseApi<RBook>>() {
+                            @Override
+                            public void onSubscribe(@NonNull Disposable d) {}
+
+                            @Override
+                            public void onSuccess(@NonNull ResponseApi<RBook> response) {
+                                if (response.statusCode == 401) {
+                                    Snackbar.make(v, "Este libro contiene atributos invalidos", Snackbar.LENGTH_LONG).show();
+                                    return;
+                                }
+                                Intent onHome = new Intent(CONTEXT, HomeActivity.class);
+                                startActivity(onHome);
+                                finish();
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                Snackbar.make(v, "Ha Ocurrido un Error al registrar el Libro", Snackbar.LENGTH_LONG).show();
+                            }
+                        });
+
+            } catch (Exception ex) {
+                Toast.makeText(CONTEXT, ex.getMessage()+" pepepe", Toast.LENGTH_LONG).show();
+            }
+        }
         );
     }
 }

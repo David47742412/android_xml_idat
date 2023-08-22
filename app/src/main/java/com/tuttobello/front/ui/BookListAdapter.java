@@ -1,31 +1,24 @@
 package com.tuttobello.front.ui;
 
 //import static androidx.core.app.ActivityCompat.recreate;
-import android.app.Activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.android.material.snackbar.Snackbar;
 import com.tuttobello.front.R;
 import com.tuttobello.front.model.book.RBook;
-import com.tuttobello.front.model.book.SBook;
 import com.tuttobello.front.model.response.ResponseApi;
 import com.tuttobello.front.usecase.book.BookUseCase;
 
 import java.util.List;
-import java.util.Objects;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.SingleObserver;
@@ -56,6 +49,13 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
 
         holder.bookNameTextView.setText(book.bookName);
         holder.bookDescrTextView.setText(book.bookDescription);
+
+        new Intent().putExtra("bookId", book.bookId)
+                .putExtra("bookName", book.bookName)
+                .putExtra("bookDescription", book.bookDescription)
+                .putExtra("categoryName", book.categoryName);
+
+        new Intent().getStringExtra("bookId");
 
         // Configurar el listener para el botón delete
         holder.deleteButton.setOnClickListener(v -> {
@@ -90,7 +90,8 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
 
                                     @Override
                                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                                        Snackbar.make(v, "Ha Ocurrido un Error al eliminar el Libro "+book.bookId, Snackbar.LENGTH_LONG).show();
+
+                                        Snackbar.make(v, e.getMessage(), Snackbar.LENGTH_LONG).show();
                                     }
                                 });
 

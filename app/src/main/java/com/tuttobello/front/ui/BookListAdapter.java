@@ -49,6 +49,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
 
         holder.bookNameTextView.setText(book.bookName);
         holder.bookDescrTextView.setText(book.bookDescription);
+        holder.descriptionBook.setText(book.categoryName);
 
         holder.updateButton.setOnClickListener(v ->{
 
@@ -124,6 +125,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
     static class BookViewHolder extends RecyclerView.ViewHolder {
         TextView bookNameTextView;
         TextView bookDescrTextView;
+        TextView descriptionBook;
         Button deleteButton;
         Button updateButton;
 
@@ -133,6 +135,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookVi
             bookDescrTextView = itemView.findViewById(R.id.bookDescrTextView);
             deleteButton = itemView.findViewById(R.id.deleteButton);
             updateButton = itemView.findViewById(R.id.updateButton);
+            descriptionBook = itemView.findViewById(R.id.descriptionBook);
         }
     }
 }
